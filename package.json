@@ -1,0 +1,38 @@
+{
+  "name": "convert-kindle-notes-to-notion-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.7",
+    "convert-kindle-notes-to-notion-page": "file:",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "web-form-with-express-example": "file:"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makenotion/notion-sdk-js.git"
+  },
+  "author": "Jess Mitchell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makenotion/notion-sdk-js/issues"
+  },
+  "keywords": [
+    "node",
+    "notion",
+    "express"
+  ],
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

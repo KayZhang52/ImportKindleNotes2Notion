@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="drop-zone" style="border: 2px dashed black; padding: 50px;">
+      Drag and drop your file here
+    </div>
+    <script>
+      const dropZone = document.getElementById('drop-zone');
+
+      dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+      });
+
+      dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const file = event.dataTransfer.files[0];
+        //if (file.name !== 'MyClippings.txt') {
+        if (true) {
+          const errorMsg = document.createElement('div');
+          errorMsg.textContent = `Error: Only MyClipping.txt is allowed， fileName: ${file.name}}`;
+          errorMsg.style.color = 'red';
+          document.body.appendChild(errorMsg);
+          setTimeout(() => {
+            document.body.removeChild(errorMsg);
+          }, 1000);
+        } else {
+          const formData = new FormData();
+          formData.append('file', file);
+
+          fetch('/k2n', {
+            method: 'POST',
+            body: formData
+          }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => console.error(err));
+        }
+      });
+    </script>
+  </body>
+</html>

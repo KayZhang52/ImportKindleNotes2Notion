@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert eBooks to PDF</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header style="display: flex; flex-direction:column; align-items: center;">
+                <div id="title-container">
+                    <img id="logo" src="images/logo.png" alt="Logo">
+                    <h1 id="title">My Kindle Notes</h1>
+                </div>
+                <h2 style="margin-top: 5px;">Transfer Kindle Notes & Highlights to Notion</h2>
+                <p style="margin-top: 5px;">One-click creation of Notion database and pages from the notes in your Kindle device.</p>
+        </header>
+
+        <!-- File Upload Section -->
+        <div id="drop-zone" style="border: 2px dashed black; padding: 100px; cursor: pointer; transition: all 0.3s ease;">
+            Drag and drop your file here, or click to select a file
+        </div>
+        <input type="file" id="file-input" style="display: none;" />
+        <script>
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.getElementById('file-input');
+        
+            // Add event listener to handle dragover
+            dropZone.addEventListener('dragover', (event) => {
+                event.preventDefault();
+            });
+        
+            // Add event listener to handle drop
+            dropZone.addEventListener('drop', (event) => {
+                event.preventDefault();
+                const file = event.dataTransfer.files[0];
+                handleFileUpload(file);
+            });
+        
+            // Add click event listener to open file dialog
+            dropZone.addEventListener('click', () => {
+                fileInput.click();
+            });
+        
+            // Add change event listener to handle file selection from input
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                handleFileUpload(file);
+            });
+        
+            // Add hover effect to make drop zone interactive
+            dropZone.addEventListener('mouseenter', () => {
+                dropZone.style.borderColor = '#FF9900';
+                dropZone.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                dropZone.style.transform = 'scale(1.05)';
+                // dropZone.style.background = 'linear-gradient(to bottom right, #f0f8ff, #F5D29E)'
+                dropZone.style.background='#F7DAAF';
+            });
+        
+            dropZone.addEventListener('mouseleave', () => {
+                dropZone.style.borderColor = 'black';
+                dropZone.style.boxShadow = 'none';
+                dropZone.style.transform = 'scale(1)';
+                dropZone.style.background = 'none';
+            });
+        
+            // Function to handle file upload logic
+            function handleFileUpload(file) {
+                if (file) {
+                    //if (file.name !== 'MyClippings.txt') {
+                    if (true) {
+                        const errorMsg = document.createElement('div');
+                        errorMsg.textContent = `Error: Only MyClipping.txt is allowed, fileName: ${file.name}`;
+                        errorMsg.style.color = 'red';
+                        document.body.appendChild(errorMsg);
+                        setTimeout(() => {
+                            document.body.removeChild(errorMsg);
+                        }, 1000);
+                    } else {
+                        const formData = new FormData();
+                        formData.append('file', file);
+        
+                        fetch('/k2n', {
+                            method: 'POST',
+                            body: formData
+                        }).then(response => response.json())
+                            .then(data => console.log(data))
+                            .catch(err => console.error(err));
+                    }
+                }
+            }
+        </script>
+        
+
+        <!-- Instructions Section -->
+        <div class="conversion-steps">
+            <h2>How to move notes & highlights to Notion</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <p>Connect your Kindle device to your laptop via USB</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <p>Find the MyClippings.txt file and upload it.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <p>Wait for your highights and notes to be transferred to Notion, should take up to few minutes.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

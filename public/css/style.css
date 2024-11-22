@@ -1,0 +1,165 @@
+/* CSS for the eBook Converter HTML */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #fdfaf5;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ff9900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header h2 {
+    font-size: 1.8em;
+    margin: 10px 0;
+    color: #333;
+}
+
+header p {
+    font-size: 1em;
+    color: #777;
+}
+
+/* Placeholder for logo */
+header::before {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url('path/to/logo.png') no-repeat center;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+#title-container {
+    display: flex;
+    align-items: center; /* Align items vertically centered in the row */
+    text-align: center;
+}
+
+#title {
+    margin: 0;
+    font-size: 2rem; /* Adjust to control the text size if needed */
+    line-height: 1; /* Ensures the title has consistent height */
+}
+
+/* Make the logo height match the text height */
+#logo {
+    height: 2em; /* Match the height of the title's text */
+    margin-right: 10px;
+}   
+
+.upload-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.choose-file-btn {
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.choose-file-btn:hover {
+    background-color: #e68a00;
+}
+
+.upload-options {
+    margin-top: 20px;
+}
+
+.option-icon {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option-icon:hover {
+    background-color: #555;
+}
+
+.conversion-steps {
+    font-family: Arial, sans-serif;
+    background-color: #fdfbf7;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.conversion-steps h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background-color: #fff4db;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff9900;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.step p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    text-align: left;
+}
